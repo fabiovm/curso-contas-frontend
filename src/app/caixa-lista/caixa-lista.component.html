@@ -1,0 +1,23 @@
+<div class="shadow p-3 mb-5 bg-white rounded">
+
+  <table style="width:100%">
+    <tr>
+      <th>Ano</th>
+      <th>Mês</th> 
+      <th>Crédito</th>
+      <th>Débito</th>
+      <th style="width:80px" >Alterar</th>
+      <th style="width:80px" >Excluir</th>
+    </tr>
+    <tr *ngFor="let value of listCaixa" >
+      <td>{{value.ano}}</td>
+      <td>{{value.mes}}</td> 
+      <td>1000</td>
+      <td>50</td>
+      <td><button type="button" class="btn btn-primary" (click)="alterarCaixa('A', value._id);" >A</button></td>
+      <td><button type="button" class="btn btn-danger">X</button></td>
+    </tr>
+    
+  </table>
+
+</div>

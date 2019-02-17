@@ -1,0 +1,17 @@
+<!-- <nav class="teal lighten-2">
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Angular</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li [ngClass]="{'active': is_active == 'novo'}"><a (click)="setActive('novo')" [routerLink]="['/novo', 1]" href="#">Novo</a></li>
+      <li [ngClass]="{'active': is_active == 'lista'}"><a (click)="setActive('lista')" [routerLink]="['/home']" href="#">Lista</a></li>
+    </ul>
+  </div>
+</nav> -->
+
+<div class="shadow-none p-3 mb-5 bg-light rounded">
+  <nav class="nav nav-pills nav-fill">
+    <a class="nav-item nav-link" (click)="setActive('home')" [routerLink]="['/home']" href="#">Home</a>
+    <a class="nav-item nav-link" (click)="setActive('lista')" [routerLink]="['/lista']" href="#">Lista</a>
+    <a class="nav-item nav-link" (click)="setActive('novo')" [routerLink]="['/novo']" href="#">Novo</a>
+  </nav>
+</div>
