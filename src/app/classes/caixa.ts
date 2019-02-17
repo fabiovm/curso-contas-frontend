@@ -1,4 +1,5 @@
 export class Caixa {
+    _id : number;
     name: String;
     mes: Number;
     ano: Number;

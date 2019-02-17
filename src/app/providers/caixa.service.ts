@@ -23,6 +23,19 @@ export class CaixaService {
     return this.http.get(url);
   }
 
+  public getCaixas(_id): Observable<any> {
+    return this.http.get(url + '/' + _id, httpOptions);
+  }
+
+  /**
+   * Atualizar livro caixa
+   * @param id 
+   * @param caixa 
+   */
+  public atualizarCaixa(id, caixa: Caixa): Observable<Caixa> {
+    return this.http.put<Caixa>(url + '/' + id, caixa, httpOptions);
+  }
+
   /**
    * Post de Livro caixa
    * @param caixa 
@@ -39,14 +52,6 @@ export class CaixaService {
     return this.http.delete(url + '/' + id, httpOptions);
   }
 
-  /**
-   * Atualizar livro caixa
-   * @param id 
-   * @param caixa 
-   */
-  public atualizarCaixa(id, caixa: Caixa): Observable<any> {
-    return this.http.put(url + '/' + id, caixa, httpOptions);
-  }
 
   
 }

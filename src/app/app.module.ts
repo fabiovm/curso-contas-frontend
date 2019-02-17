@@ -10,7 +10,10 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule }   from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CaixaCrudComponent } from './caixa-crud/caixa-crud.component';
-import { CaixaService } from '../app/providers/caixa.service'
+import { CaixaService } from '../app/providers/caixa.service';
+import { Caixa } from '../app/classes/caixa';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -19,16 +22,17 @@ import { CaixaService } from '../app/providers/caixa.service'
     NavbarComponent,
     HomeComponent,
     CaixaCrudComponent
-    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot() // ToastrModule added
   ],
-  providers: [CaixaService],
+  providers: [CaixaService, Caixa],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
