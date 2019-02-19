@@ -15,7 +15,6 @@ export class CaixaCrudComponent implements OnInit {
   public tipo: string;
   public teste: string;
 
-
   constructor(
     private toastr: ToastrService,
     public caixa: Caixa,
@@ -33,37 +32,73 @@ export class CaixaCrudComponent implements OnInit {
   }
 
   public adicionarCaixa(caixa: Caixa) {
-    this.caixaService.adicionarCaixa(caixa);
+    this.caixaService.adicionarCaixa(caixa)
+    .subscribe(
+      result => {
+        console.log(result);
+        this.toastr.success('Adicionada com sucesso.', 'Caixa');
+        this.router.navigate(['lista']);
+      },
+      error => {
+        this.toastr.error(error.error.errors[0], 'Caixa', {
+          timeOut: 3000
+        });
+        console.log(error);
+      }
+    );
+
   }
 
   public getCaixas(_id) {
     this.caixaService.getCaixas(_id)
       .subscribe(
         result => {
-          console.log(result);
           this.caixa = result;
         },
         error => {
-          this.toastr.error('Caixa', error, {
+          this.toastr.error(error.error.errors[0], 'Caixa', {
             timeOut: 3000
           });
-          console.log(error);
         }
       );
   }
 
   public removerCaixa(_id) {
-    this.caixaService.removerCaixa(_id);
+    this.caixaService.removerCaixa(_id)
+    .subscribe(
+      result => {
+        this.toastr.success('Removida com sucesso.', 'Caixa');
+        console.log(result);
+       // this.caixa = result;
+      },
+      error => {
+        this.toastr.error(error.error.errors[0], 'Caixa', {
+          timeOut: 3000
+        });
+      }
+    );
+
   }
 
   public atualizarCaixa(caixa: Caixa) {
-    this.caixaService.atualizarCaixa(caixa._id, caixa);
+    this.caixaService.atualizarCaixa(caixa._id, caixa) 
+    .subscribe(
+      result => {
+        console.log(result);
+        this.toastr.success('Atualizada com sucesso.', 'Caixa');
+        this.caixa = result;
+      },
+      error => {
+        this.toastr.error(error.error.errors[0], 'Caixa', {
+          timeOut: 3000
+        });
+      }
+    );
   }
 
 
   
   public adicionarCredito() {
-    this.toastr.success('Caixa', 'Adicionado mais credito.');
     this.caixa.credito.push({ name: "", value: 0 })
   }
 

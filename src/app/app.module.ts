@@ -13,7 +13,7 @@ import { CaixaCrudComponent } from './caixa-crud/caixa-crud.component';
 import { CaixaService } from '../app/providers/caixa.service';
 import { Caixa } from '../app/classes/caixa';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { ToastrModule } from 'ngx-toastr';
     FontAwesomeModule,
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot(), // ToastrModule added
+    ToastNoAnimationModule.forRoot()
   ],
   providers: [CaixaService, Caixa],
   bootstrap: [AppComponent]
