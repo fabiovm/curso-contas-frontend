@@ -29,6 +29,15 @@ export class CaixaCrudComponent implements OnInit {
       this.getCaixas(this.id);
     }
 
+    if (this.tipo == "N") {
+      console.log("novo")
+      this.caixa.name = "";
+      this.caixa.ano = 0;
+      this.caixa.mes = 0;
+      this.caixa.credito = [{"name" : "", "value": 0}];
+      this.caixa.debito = [{"name" : "", "value": 0, "status": ""}]
+    }
+    
   }
 
   public adicionarCaixa(caixa: Caixa) {
