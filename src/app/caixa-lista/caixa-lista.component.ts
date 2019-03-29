@@ -21,13 +21,35 @@ export class CaixaListaComponent implements OnInit {
 
   ngOnInit() {
     this.listarCaixas()
+    
   }
 
   public listarCaixas (){
     return this.caixaService.listarCaixas()
-      .subscribe(listCaixa => this.listCaixa = listCaixa);
-
+      .subscribe(listCaixa => {
+        this.listCaixa = this.totalizarCaixas(listCaixa);
+        console.log(this.listCaixa);
+      }) ;
   }
+
+  private totalizarCaixas (listCaixa: any){
+    let creditoTotal = 0;
+    let debitoTotal = 0;
+    for (let i = 0; i < listCaixa.length; i++) {
+      for (let x = 0; x < listCaixa[i].credito.length; x++) {
+        creditoTotal = creditoTotal + listCaixa[i].credito[x].value;
+      }
+      for (let x = 0; x < listCaixa[i].debito.length; x++) {
+        debitoTotal = debitoTotal + listCaixa[i].debito[x].value;
+      }     
+      listCaixa[i].creditoTotal = creditoTotal;
+      listCaixa[i].debitoTotal = debitoTotal;
+      creditoTotal = 0;
+      debitoTotal = 0;     
+    }
+    return listCaixa;
+  }
+
 
   public removerCaixa(_id) {
     this.caixaService.removerCaixa(_id)

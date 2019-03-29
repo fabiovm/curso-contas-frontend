@@ -2,6 +2,7 @@
 
   <table style="width:100%">
     <tr>
+      <th>Nome</th>
       <th>Ano</th>
       <th>Mês</th> 
       <th>Crédito</th>
@@ -10,10 +11,11 @@
       <th style="width:80px" >Excluir</th>
     </tr>
     <tr *ngFor="let value of listCaixa" >
+      <td>{{value.name}}</td>
       <td>{{value.ano}}</td>
       <td>{{value.mes}}</td> 
-      <td>1000</td>
-      <td>50</td>
+      <td>{{value.creditoTotal}}</td> 
+      <td>{{value.debitoTotal}}</td> 
       <td><button type="button" class="btn btn-primary" (click)="alterarCaixa('A', value._id);" >A</button></td>
       <td><button type="button" class="btn btn-danger" (click)="removerCaixa(value._id)">X</button></td>
     </tr>
